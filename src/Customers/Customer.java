@@ -1,6 +1,6 @@
 package Customers;
-
-public abstract class Customer<T> {
+//TODO: Think better about customer classes and methods.
+public class Customer<T> {
     private T iD;
     private String customerType;
 
