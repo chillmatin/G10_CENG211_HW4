@@ -1,11 +1,11 @@
 package Exceptions;
 
 public class InvalidCustomerException extends InvalidRentalDataException {
-    InvalidCustomerException() {
+    public InvalidCustomerException() {
         super("Customer data is invalid");
     }
 
-    InvalidCustomerException(String message) {
+    public InvalidCustomerException(String message) {
         super(message);
     }
 }
