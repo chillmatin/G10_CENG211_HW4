@@ -8,4 +8,6 @@ public class EmptyRentalDataException extends InvalidRentalDataException {
     EmptyRentalDataException(String message) {
         super(message);
     }
+
+    //
 }

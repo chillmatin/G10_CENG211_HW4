@@ -1,4 +1,4 @@
-package Customer;
+package Customers;
 
 public abstract class Customer {
 }
