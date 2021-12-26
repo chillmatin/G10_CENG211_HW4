@@ -6,4 +6,5 @@ public class IndividualCustomer<T> extends Customer<T>{
         super(id, "Individual");
     }
 
+
 }
