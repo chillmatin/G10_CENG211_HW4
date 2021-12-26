@@ -1,11 +1,11 @@
 package Exceptions;
 
 public class InvalidCustomerIdException extends InvalidCustomerException {
-    InvalidCustomerIdException() {
+    public InvalidCustomerIdException() {
         super("Customer's Id is invalid.");
     }
 
-    InvalidCustomerIdException(String message) {
+    public InvalidCustomerIdException(String message) {
         super(message);
     }
 }

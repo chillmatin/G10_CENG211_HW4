@@ -1,11 +1,11 @@
 package Exceptions;
 
 public class InvalidRentalDataException extends Exception {
-    InvalidRentalDataException() {
+    public InvalidRentalDataException() {
         super("Rental Data is Invalid");
     }
 
-    InvalidRentalDataException(String message) {
+    public InvalidRentalDataException(String message) {
         super(message);
     }
 }

@@ -1,13 +1,12 @@
 package Exceptions;
 
 public class EmptyRentalDataException extends InvalidRentalDataException {
-    EmptyRentalDataException() {
+    public EmptyRentalDataException() {
         super("Rental Data is Empty.");
     }
 
-    EmptyRentalDataException(String message) {
+    public EmptyRentalDataException(String message) {
         super(message);
     }
 
-    //
 }
