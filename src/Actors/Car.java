@@ -1,10 +1,12 @@
+package Actors;
+
 public class Car {
 
     String carModel;
     int modelYear;
     double basePrice;
 
-    Car(String carModel_,String modelYear_,String basePrice_){
+    public Car(String carModel_, String modelYear_, String basePrice_){
         setCarModel(carModel_);
         setModelYear(modelYear_);
         setBasePrice(basePrice_);
@@ -26,7 +28,6 @@ public class Car {
         this.basePrice = Double.parseDouble(basePrice);
     }
 
-
     private void setCarModel(String carModel) {
         this.carModel = carModel;
     }
@@ -43,6 +44,4 @@ public class Car {
                 ", basePrice=" + basePrice +
                 '}';
     }
-
-
 }

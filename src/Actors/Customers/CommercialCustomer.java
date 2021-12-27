@@ -1,8 +1,8 @@
-package Customers;
+package Actors.Customers;
 
 public class CommercialCustomer extends Customer<String> {
 
-    CommercialCustomer(String id) {
+    public CommercialCustomer(String id) {
         super(id, "Commercial");
     }
 

@@ -1,8 +1,8 @@
-package Customers;
+package Actors.Customers;
 
 public class IndividualCustomer<T> extends Customer<T>{
 
-    IndividualCustomer(T id,boolean isMember) {
+    public IndividualCustomer(T id, boolean isMember) {
         super(id, "Individual");
     }
 

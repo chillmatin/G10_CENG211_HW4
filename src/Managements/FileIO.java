@@ -1,3 +1,4 @@
+package Managements;
 
 import Exceptions.EmptyRentalDataException;
 
@@ -55,9 +56,7 @@ public class FileIO implements Serializable {
     }
 
     public static ArrayList<String> getDataArray(){
-        ArrayList<String> temp = new ArrayList<>();
-        Collections.copy(temp,dataArray);
-        return temp;
+        return dataArray ; //deepCopy needed
     }
 
 
