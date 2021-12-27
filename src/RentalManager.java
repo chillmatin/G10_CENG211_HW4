@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class RentalManager{
 
 
-    public void manageIt(){
+    public void manageRentalData(){
         FileIO.readFile("HW4_Rentals.csv");
         ArrayList<String> rentalDataArray = FileIO.getDataArray();
 

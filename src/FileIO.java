@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 
@@ -18,13 +17,12 @@ public class FileIO implements Serializable {
 
     public static void readFile(String file) {
         try {
-            inputStream = openFile(file); // it can throw a FileNotFoundException. Has been caught in openFile method.
-            readLines(); // it can throw a IOException, will catch here.
+            inputStream = openFile(file); // It can throw a FileNotFoundException. Has been caught in openFile method.
+            readLines(); // It can throw a IOException, will catch here.
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private static BufferedReader openFile(String file) {
