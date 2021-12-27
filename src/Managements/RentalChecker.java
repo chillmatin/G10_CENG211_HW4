@@ -2,7 +2,7 @@ package Managements;
 
 import Exceptions.InvalidCustomerIdException;
 
-class RentalController {
+class RentalChecker {
 
     static boolean isNumeric(String stringNumber) { //package access
         if (stringNumber == null) {

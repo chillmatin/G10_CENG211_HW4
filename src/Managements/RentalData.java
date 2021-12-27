@@ -7,11 +7,12 @@ import Exceptions.InvalidCustomerException;
 
 import java.util.Objects;
 
-public class RentalData<T> {
+class RentalData<T> {
 
     private final int rentalTime;
     private double modelYearRatio;
     private final int rentalCode;
+    private int rentalPrice;
 
     private final Customer<T> customer;
     private final Car car;
@@ -19,11 +20,12 @@ public class RentalData<T> {
 
     RentalData(Customer<T> customer, Car car, int time) {
         this.customer = customer;
-
         this.car = car;
         this.rentalTime = time;
         this.rentalCode = RentalCalculator.generateRentalCode();
+        this.rentalPrice = (int) RentalCalculator.calculatePrice(this);
         modelYearRatio = 0; //by default.
+
     }
 
     int getRentalTime() {
@@ -98,7 +100,7 @@ public class RentalData<T> {
     }
 
     int getRentalPrice() {
-        return (int) RentalCalculator.calculatePrice(this);
+        return rentalPrice;
     }
 
 
