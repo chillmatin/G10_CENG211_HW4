@@ -1,8 +1,8 @@
 package Actors.Customers;
-//TODO: Think better about customer classes and methods.
-public class Customer<T> {
+
+public  class Customer<T> {
     private T id;
-    private String customerType;
+    private final String customerType;
 
     public Customer(T id, String customerType) {
         setId(id);

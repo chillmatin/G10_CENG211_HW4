@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class FileIO implements Serializable {
+class FileIO implements Serializable {
 
     private static final ArrayList<String> dataArray = new ArrayList<>();
     private static BufferedReader inputStream;
@@ -55,7 +55,7 @@ public class FileIO implements Serializable {
         }
     }
 
-    public static ArrayList<String> getDataArray(){
+    static ArrayList<String> getDataArray(){
         return dataArray ; //deepCopy needed
     }
 

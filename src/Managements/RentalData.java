@@ -2,35 +2,107 @@ package Managements;
 
 import Actors.*;
 import Actors.Customers.*;
+import Exceptions.InvalidCustomerException;
 
-import java.io.Serializable;
+
 import java.util.Objects;
 
 public class RentalData<T> {
 
-    private int rentalTime;
-    private Customer<? extends Serializable> customer;
-    private Car car;
+    private final int rentalTime;
+    private double modelYearRatio;
+    private final int rentalCode;
+
+    private final Customer<T> customer;
+    private final Car car;
 
 
-    RentalData(Customer<? extends Serializable> customer, Car car, int time){
-        this.customer=customer;
-        this.car=car;
-        this.rentalTime=time;
+    RentalData(Customer<T> customer, Car car, int time) {
+        this.customer = customer;
+
+        this.car = car;
+        this.rentalTime = time;
+        this.rentalCode = RentalCalculator.generateRentalCode();
+        modelYearRatio = 0; //by default.
     }
 
-    public int getRentalTime() {
+    int getRentalTime() {
         return rentalTime;
     }
 
-    public Customer<? extends Serializable> getCustomer() {
-        return new Customer<>(customer.getId(),customer.getCustomerType());
+    //---
+
+    Customer<T> getCustomer() {
+        return new Customer<>(customer.getId(), customer.getCustomerType());
     }
 
 
-    public Car getCar() {
-        return new Car(car.getCarModel(),car.getModelYear(),car.getBasePrice());
+    private Car getCar() {
+        return new Car(car.getCarModel(), car.getModelYear(), car.getBasePrice());
     }
+
+    double getModelYearRatio() {
+
+        if (car.getModelYear() == 2022) {
+            modelYearRatio = 1;
+        } else if (car.getModelYear() == 2020 || car.getModelYear() == 2021) {
+            modelYearRatio = 0.95;
+        } else {
+            modelYearRatio = 0.90;
+        }
+        return modelYearRatio;
+    }
+
+    double getCarBasePrice() {
+        return car.getBasePrice();
+    }
+
+    String getCarModel() {
+        return car.getCarModel();
+    }
+
+    String getMembership() {
+        try {
+            if (getCustomerType().equals("Individual")) {
+                if (((IndividualCustomer<?>) customer).isMember()) {
+                    return "Member";
+                } else {
+                    return "Not Member";
+                }
+            } else if (getCustomerType().equals("Commercial")) {
+                return ((CommercialCustomer) customer).getMembershipType();
+            } else {
+                throw new InvalidCustomerException("Membership is invalid");
+            }
+
+        } catch (InvalidCustomerException e) {
+            System.out.println(e.getMessage());
+        }
+        return "Not Member";
+    }
+
+    int getModelYear() {
+        return getCar().getModelYear();
+    }
+
+    String getCustomerType() {
+        return getCustomer().getCustomerType();
+    }
+
+    T getId() {
+        return getCustomer().getId();
+    }
+
+    int getRentalCode() {
+        return rentalCode;
+    }
+
+    int getRentalPrice() {
+        return (int) RentalCalculator.calculatePrice(this);
+    }
+
+
+    //---
 
 
     @Override
