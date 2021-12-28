@@ -14,39 +14,39 @@ class RentalCounter {
     static int totalPlatinumMemberCommercialRentals = 0;
 
 
-    public static int getTotalCarRented() {
+     static int getTotalCarRented() {
         return totalCarRented;
     }
 
-    public static int getTotalCommercialRentals() {
+    static int getTotalCommercialRentals() {
         return totalCommercialRentals;
     }
 
-    public static int getTotalCommercialRentalMonth() {
+     static int getTotalCommercialRentalMonth() {
         return totalCommercialRentalMonth;
     }
 
-    public static int getTotalIndividualRentals() {
+     static int getTotalIndividualRentals() {
         return totalIndividualRentals;
     }
 
-    public static int getTotalIndividualRentalDay() {
+     static int getTotalIndividualRentalDay() {
         return totalIndividualRentalDay;
     }
 
-    public static int getTotalNonMemberIndividualRentals() {
+     static int getTotalNonMemberIndividualRentals() {
         return totalNonMemberIndividualRentals;
     }
 
-    public static int getTotalMemberIndividualRentals() {
+     static int getTotalMemberIndividualRentals() {
         return totalMemberIndividualRentals;
     }
 
-    public static int getTotalSilverMemberCommercialRentals() {
+     static int getTotalSilverMemberCommercialRentals() {
         return totalSilverMemberCommercialRentals;
     }
 
-    public static int getTotalGoldMemberCommercialRentals() {
+     static int getTotalGoldMemberCommercialRentals() {
         return totalGoldMemberCommercialRentals;
     }
 
@@ -54,5 +54,17 @@ class RentalCounter {
         return totalPlatinumMemberCommercialRentals;
     }
 
+    static void printCounters() {
+        System.out.println("Total number of cars rented:" + RentalCounter.getTotalCarRented());
+        System.out.println("Total number of commercial rentals:" + RentalCounter.getTotalCommercialRentals());
+        System.out.println("Total number of commercial rental-month:" + RentalCounter.getTotalCommercialRentalMonth());
+        System.out.println("Total number of individual rentals:" + RentalCounter.getTotalIndividualRentals());
+        System.out.println("Total number of individual rentals-day:" + RentalCounter.getTotalIndividualRentalDay());
+        System.out.println("Total number of rentals of individual non-member customers:" + RentalCounter.getTotalNonMemberIndividualRentals());
+        System.out.println("Total number of rentals of individual member customers:" + RentalCounter.getTotalMemberIndividualRentals());
+        System.out.println("Total number of rentals of silver commercial customers:" + RentalCounter.getTotalSilverMemberCommercialRentals());
+        System.out.println("Total number of rentals of gold commercial customers:" + RentalCounter.getTotalGoldMemberCommercialRentals());
+        System.out.println("Total number of rentals of platinum commercial customers:" + RentalCounter.getTotalPlatinumMemberCommercialRentals());
+    }
 
 }

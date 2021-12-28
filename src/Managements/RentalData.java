@@ -22,7 +22,8 @@ class RentalData<T> {
         this.customer = customer;
         this.car = car;
         this.rentalTime = time;
-        this.rentalCode = RentalCalculator.generateRentalCode();
+        RentalCalculator.generateRentalCode();
+        this.rentalCode =RentalCalculator.getRentalCode();
         this.rentalPrice = (int) RentalCalculator.calculatePrice(this);
         modelYearRatio = 0; //by default.
 
