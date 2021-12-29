@@ -21,15 +21,15 @@ class RentalData<T> {
 
 
     RentalData(Customer<T> customer, Car car, int time) {
-
-        RentalCalculator.generateRentalCode();
-        this.rentalCode = RentalCalculator.getRentalCode();
+        rentalCalculator = new RentalCalculator();
+        rentalCalculator.generateRentalCode();
+        this.rentalCode = rentalCalculator.getRentalCode();
 
         this.customer = customer;
         this.car = car;
         this.rentalTime = time;
 
-        rentalCalculator = new RentalCalculator();
+
         this.rentalPrice = (int) rentalCalculator.calculatePrice(this);
 
         modelYearRatio = 0; //by default.

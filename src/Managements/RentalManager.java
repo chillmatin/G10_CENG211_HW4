@@ -32,6 +32,7 @@ public class RentalManager {
             String id = splitElement[1];
             int time = Integer.parseInt(splitElement[2]);
             try {
+
                 Customer<?> customer = setCustomer(id, customerType);
                 Car car = new Car(splitElement[3], splitElement[4], splitElement[5]);
 

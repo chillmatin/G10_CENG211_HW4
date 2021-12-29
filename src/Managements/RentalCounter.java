@@ -4,109 +4,69 @@ import Interfaces.IRentalCounter;
 
 class RentalCounter implements IRentalCounter {
 
-    private int totalCarRented = 0;
-    private int totalCommercialRentals = 0;
-    private int totalCommercialRentalMonth = 0;
-    private int totalIndividualRentals = 0;
-    private int totalIndividualRentalDay = 0;
-    private int totalNonMemberIndividualRentals = 0;
-    private int totalMemberIndividualRentals = 0;
-    private int totalSilverMemberCommercialRentals = 0;
-    private int totalGoldMemberCommercialRentals = 0;
-    private int totalPlatinumMemberCommercialRentals = 0;
+    private static int totalCarRented = 0;
+    private static int totalCommercialRentals = 0;
+    private static int totalCommercialRentalMonth = 0;
+    private static int totalIndividualRentals = 0;
+    private static int totalIndividualRentalDay = 0;
+    private static int totalNonMemberIndividualRentals = 0;
+    private static int totalMemberIndividualRentals = 0;
+    private static int totalSilverMemberCommercialRentals = 0;
+    private static int totalGoldMemberCommercialRentals = 0;
+    private static int totalPlatinumMemberCommercialRentals = 0;
 
-    public void addTotalCarRented() {
+    public static void addTotalCarRented() {
         totalCarRented++;
     }
 
-    public void addTotalCommercialRentals() {
+    public static void addTotalCommercialRentals() {
         totalCommercialRentals++;
     }
 
-    public void addTotalCommercialRentalMonth(int time) {
+    public static void addTotalCommercialRentalMonth(int time) {
         totalCommercialRentalMonth += time;
     }
 
-    public void addTotalIndividualRentals() {
+    public static void addTotalIndividualRentals() {
         totalIndividualRentals++;
     }
 
-    public void addTotalIndividualRentalDay(int time) {
+    public static void addTotalIndividualRentalDay(int time) {
         totalIndividualRentalDay += time;
     }
 
-    public void addTotalNonMemberIndividualRentals() {
+    public static void addTotalNonMemberIndividualRentals() {
         totalNonMemberIndividualRentals++;
     }
 
-    public void addTotalMemberIndividualRentals() {
+    public static void addTotalMemberIndividualRentals() {
         totalMemberIndividualRentals++;
     }
 
-    public void addTotalSilverMemberCommercialRentals() {
+    public static void addTotalSilverMemberCommercialRentals() {
         totalSilverMemberCommercialRentals++;
     }
 
-    public void addTotalGoldMemberCommercialRentals() {
+    public static void addTotalGoldMemberCommercialRentals() {
         totalGoldMemberCommercialRentals++;
     }
 
-    public void addTotalPlatinumMemberCommercialRentals() {
+    public static void addTotalPlatinumMemberCommercialRentals() {
         totalPlatinumMemberCommercialRentals++;
     }
 
 
-    private int getTotalCarRented() {
-        return totalCarRented;
-    }
-
-    private int getTotalCommercialRentals() {
-        return totalCommercialRentals;
-    }
-
-    private int getTotalCommercialRentalMonth() {
-        return totalCommercialRentalMonth;
-    }
-
-    private int getTotalIndividualRentals() {
-        return totalIndividualRentals;
-    }
-
-    private int getTotalIndividualRentalDay() {
-        return totalIndividualRentalDay;
-    }
-
-    private int getTotalNonMemberIndividualRentals() {
-        return totalNonMemberIndividualRentals;
-    }
-
-    private int getTotalMemberIndividualRentals() {
-        return totalMemberIndividualRentals;
-    }
-
-    private int getTotalSilverMemberCommercialRentals() {
-        return totalSilverMemberCommercialRentals;
-    }
-
-    private int getTotalGoldMemberCommercialRentals() {
-        return totalGoldMemberCommercialRentals;
-    }
-
-    private  int getTotalPlatinumMemberCommercialRentals() {
-        return totalPlatinumMemberCommercialRentals;
-    }
-
-     public void printCounters() {
-        System.out.println("Total number of cars rented:" + getTotalCarRented());
-        System.out.println("Total number of commercial rentals:" + getTotalCommercialRentals());
-        System.out.println("Total number of commercial rental-month:" + getTotalCommercialRentalMonth());
-        System.out.println("Total number of individual rentals:" + getTotalIndividualRentals());
-        System.out.println("Total number of individual rentals-day:" + getTotalIndividualRentalDay());
-        System.out.println("Total number of rentals of individual non-member customers:" + getTotalNonMemberIndividualRentals());
-        System.out.println("Total number of rentals of individual member customers:" + getTotalMemberIndividualRentals());
-        System.out.println("Total number of rentals of silver commercial customers:" + getTotalSilverMemberCommercialRentals());
-        System.out.println("Total number of rentals of gold commercial customers:" + getTotalGoldMemberCommercialRentals());
-        System.out.println("Total number of rentals of platinum commercial customers:" + getTotalPlatinumMemberCommercialRentals());
+    public void printCounters() {
+        System.out.println("Total number of cars rented:" + totalCarRented);
+        System.out.println("Total number of commercial rentals:" + totalCommercialRentals);
+        System.out.println("Total number of commercial rental-month:" + totalCommercialRentalMonth );
+        System.out.println("Total number of individual rentals:" + totalIndividualRentals);
+        System.out.println("Total number of individual rentals-day:" + totalIndividualRentalDay);
+        System.out.println("Total number of rentals of individual non-member customers:" + totalNonMemberIndividualRentals);
+        System.out.println("Total number of rentals of individual member customers:" + totalMemberIndividualRentals);
+        System.out.println("Total number of rentals of silver commercial customers:" + totalSilverMemberCommercialRentals);
+        System.out.println("Total number of rentals of gold commercial customers:" + totalGoldMemberCommercialRentals);
+        System.out.println("Total number of rentals of platinum commercial customers:" + totalPlatinumMemberCommercialRentals);
     }
 
 }

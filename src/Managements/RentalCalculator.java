@@ -5,14 +5,10 @@ import java.util.Random;
 
 class RentalCalculator {
 
-
     private static double discountRate;
     private static int randInt;
-    private RentalCounter rentalCounter;
 
-    RentalCalculator(){
-        rentalCounter = new RentalCounter();
-    }
+
 
     double calculatePrice(RentalData<?> rentalData) {
         double daily_price = rentalData.getCarBasePrice() * rentalData.getModelYearRatio();
@@ -21,16 +17,16 @@ class RentalCalculator {
         if (rentalData.getCustomerType().equals("Commercial")) {
             double d = daily_price * rentalData.getRentalTime() * 30 * discountRate;
 
-            rentalCounter.addTotalCommercialRentals();
-            rentalCounter.addTotalCommercialRentalMonth(rentalData.getRentalTime());
+            RentalCounter.addTotalCommercialRentals();
+            RentalCounter.addTotalCommercialRentalMonth(rentalData.getRentalTime());
 
             return (double) (Math.round(d * 100.0) / 100);
         } else {
 
             double d = daily_price * rentalData.getRentalTime() * 1 * discountRate;
 
-            rentalCounter.addTotalIndividualRentals();
-            rentalCounter.addTotalIndividualRentalDay(rentalData.getRentalTime());
+            RentalCounter.addTotalIndividualRentals();
+            RentalCounter.addTotalIndividualRentalDay(rentalData.getRentalTime());
 
             return (double) (Math.round(d * 100.0) / 100);
         }
@@ -39,33 +35,32 @@ class RentalCalculator {
     }
 
     private void calculateDiscountRate(RentalData<?> rentalData) {
-        rentalCounter.addTotalCarRented();
+        RentalCounter.addTotalCarRented();
         if (rentalData.getMembership().equals("Member")) {
-            rentalCounter.addTotalMemberIndividualRentals();
+            RentalCounter.addTotalMemberIndividualRentals();
             discountRate = 0.9;
         } else if (rentalData.getMembership().equals("S")) {
-            rentalCounter.addTotalSilverMemberCommercialRentals();
+            RentalCounter.addTotalSilverMemberCommercialRentals();
             discountRate = 0.8;
         } else if (rentalData.getMembership().equals("G")) {
-            rentalCounter.addTotalGoldMemberCommercialRentals();
+            RentalCounter.addTotalGoldMemberCommercialRentals();
             discountRate = 0.75;
         } else if (rentalData.getMembership().equals("P")) {
-            rentalCounter.addTotalPlatinumMemberCommercialRentals();
+            RentalCounter.addTotalPlatinumMemberCommercialRentals();
             discountRate = 0.7;
         } else {
-            rentalCounter.addTotalNonMemberIndividualRentals();
+            RentalCounter.addTotalNonMemberIndividualRentals();
             discountRate = 1;
         }
 
     }
 
-    static int getRentalCode() {
+     int getRentalCode() {
         return randInt;
     }
 
-    static void generateRentalCode() {
+     void generateRentalCode() {
         Random random = new Random();
-
         randInt = random.nextInt(1000000, 9999999);
     }
 
