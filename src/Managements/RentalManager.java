@@ -3,6 +3,8 @@ package Managements;
 import Actors.Car;
 import Actors.Customers.*;
 import Exceptions.InvalidCustomerException;
+import Interfaces.IRentalChecker;
+import Interfaces.IRentalCounter;
 
 
 import java.util.ArrayList;
@@ -13,20 +15,26 @@ public class RentalManager {
     ArrayList<RentalData<?>> individualRentals = new ArrayList<>();
     ArrayList<RentalData<?>> commercialRentals = new ArrayList<>();
 
+    private IRentalChecker rentalChecker;
+    private IRentalCounter rentalCounter;
+
+    public RentalManager(){
+        rentalChecker= new RentalChecker();
+        rentalCounter = new RentalCounter();
+    }
+
     public void processRentals() {
         FileIO.readFile("HW4_Rentals.csv");
         ArrayList<String> dataArray = FileIO.getDataArray();
-
         for (String element : dataArray) {
             String[] splitElement = element.split(",");
-
             String customerType = splitElement[0];
             String id = splitElement[1];
             int time = Integer.parseInt(splitElement[2]);
-
             try {
                 Customer<?> customer = setCustomer(id, customerType);
                 Car car = new Car(splitElement[3], splitElement[4], splitElement[5]);
+
                 RentalData<?> rentalData = setRentalData(customer, car, time);
                 listAssign(rentalData);
 
@@ -50,9 +58,10 @@ public class RentalManager {
     }
 
     private Customer<?> setCustomer(String id, String customerType) throws InvalidCustomerException {
-        if (RentalChecker.checkIdValidity(id)) {
+
+        if (rentalChecker.checkIdValidity(id)) {
             if (customerType.equals("Individual")) {
-                if (RentalChecker.isNumeric(id)) {
+                if (rentalChecker.isNumeric(id)) {
                     return new IndividualCustomer<>(Long.parseLong(id), false);
                 } else {
                     return new IndividualCustomer<>(id, true);
@@ -94,7 +103,7 @@ public class RentalManager {
 
     public void printStatistics() {
         System.out.println("Welcome..");
-        RentalCounter.printCounters();
+        rentalCounter.printCounters();
         printIndividualTable();
         printCommercialTable();
     }

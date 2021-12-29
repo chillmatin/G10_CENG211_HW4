@@ -1,10 +1,13 @@
 package Managements;
 
 import Exceptions.InvalidCustomerIdException;
+import Interfaces.IRentalChecker;
 
-class RentalChecker {
+class RentalChecker implements IRentalChecker {
 
-    static boolean isNumeric(String stringNumber) { //package access
+
+
+    public boolean isNumeric(String stringNumber) { //package access
         if (stringNumber == null) {
             return false;
         }
@@ -16,7 +19,7 @@ class RentalChecker {
         return true;
     }
 
-     static boolean checkIdValidity(String id) { //package access
+      public boolean checkIdValidity(String id) { //package access
         try {
             if (id.length() == 8) {
                 if (!isNumeric(id)) {

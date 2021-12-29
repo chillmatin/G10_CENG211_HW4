@@ -9,7 +9,9 @@ import java.util.Objects;
 
 class RentalData<T> {
 
-    private final int rentalTime;
+    private RentalCalculator rentalCalculator;
+
+    private int rentalTime;
     private double modelYearRatio;
     private final int rentalCode;
     private int rentalPrice;
@@ -19,12 +21,17 @@ class RentalData<T> {
 
 
     RentalData(Customer<T> customer, Car car, int time) {
+
+        RentalCalculator.generateRentalCode();
+        this.rentalCode = RentalCalculator.getRentalCode();
+
         this.customer = customer;
         this.car = car;
         this.rentalTime = time;
-        RentalCalculator.generateRentalCode();
-        this.rentalCode =RentalCalculator.getRentalCode();
-        this.rentalPrice = (int) RentalCalculator.calculatePrice(this);
+
+        rentalCalculator = new RentalCalculator();
+        this.rentalPrice = (int) rentalCalculator.calculatePrice(this);
+
         modelYearRatio = 0; //by default.
 
     }
@@ -106,7 +113,6 @@ class RentalData<T> {
 
 
     //---
-
 
     @Override
     public boolean equals(Object o) {

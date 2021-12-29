@@ -16,7 +16,7 @@ class FileIO implements Serializable {
     private static final ArrayList<String> dataArray = new ArrayList<>();
     private static BufferedReader inputStream;
 
-    public static void readFile(String file) {
+    static void readFile(String file) {
         try {
             inputStream = openFile(file); // It can throw a FileNotFoundException. Has been caught in openFile method.
             readLines(); // It can throw a IOException, will catch here.
