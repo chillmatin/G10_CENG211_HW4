@@ -6,7 +6,7 @@ Berke Udunman: **@udunmanned**
 
 ## To-do:
 - [x] Determine Responsibilities
-- [ ] Design interfaces
+- [x] Design interfaces
 - [ ] Construct UML
 - [ ] Implement code
 - [ ] Testing
