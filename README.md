@@ -5,7 +5,7 @@ Berke Udunman: **@udunmanned**
 
 
 ## To-do:
-- [ ] Determine Responsibilities
+- [x] Determine Responsibilities
 - [ ] Design interfaces
 - [ ] Construct UML
 - [ ] Implement code
@@ -14,6 +14,11 @@ Berke Udunman: **@udunmanned**
 
 ## Responsibilities
 Required responsibilities to finalize the task.
+- holding all Rental Data: **_RentalDataManager_**
+- checking for rental data's validity: **_RentalDataValidityChecker_**
+- creating rental objects: **_RentalCollection_**
+- generating statistical data out of rental objects: **_RentalStats_**
+- main class: **_RentACarApp_**
 
 ## Interfaces
 Set of methods to implement indicated responsibilities
