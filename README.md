@@ -32,6 +32,28 @@ void printStats();
 void printIndividualRentals();
 void printCommercialRentals();
 ```
+
+##### IRentalDataChecker:
+```java
+void check(String[][] rentalRawData)    // throws appropriate exception if data is not valid
+```
+
+##### IRentalCollection
+```java
+HashMap<String, Rental> getRentals();       // HashMap maps Rental Code string to Rental object
+```
+
+##### IRentalStats
+```java
+int getRentedCarCount();
+int getCommercialRentalCount();
+int getCommercialRentalMonthCount();
+int getIndividualRentalCount();
+int getIndividualRentalDayCount();
+int getIndividualNonMemberCustomerCount();
+int getIndividualMemberCustomerCount();
+int getCommercialCustomerCount(String customerType);
+```
 ## UML diagram
 Define classes for each responsibility and draw interactions between them
 
