@@ -15,6 +15,7 @@ Berke Udunman: **@udunmanned**
 ## Responsibilities
 Required responsibilities to finalize the task.
 - holding all Rental Data: **_RentalDataManager_**
+- holding one rental data: **_Rental_**
 - checking for rental data's validity: **_RentalDataValidityChecker_**
 - creating rental objects: **_RentalCollection_**
 - generating statistical data out of rental objects: **_RentalStats_**
