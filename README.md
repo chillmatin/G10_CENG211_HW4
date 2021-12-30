@@ -26,7 +26,12 @@ Set of methods to implement indicated responsibilities
 
 ## UML diagram
 Define classes for each responsibility and draw interactions between them
-
+##### IRentalDataManager:
+```java
+void printStats();
+void printIndividualRentals();
+void printCommercialRentals();
+```
 ## Write code
 Start writing classes from least coupled to most coupled 
 
