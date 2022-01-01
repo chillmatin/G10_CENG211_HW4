@@ -33,10 +33,6 @@ void printIndividualRentals();
 void printCommercialRentals();
 ```
 
-##### IRentalDataChecker:
-```java
-void check(String[][] rentalRawData)    // throws appropriate exception if data is not valid
-```
 
 ##### IRentalCollection
 ```java
