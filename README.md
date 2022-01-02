@@ -1,4 +1,4 @@
-# G10_CENG211_HW4
+# [G10_CENG211_HW4](https://github.com/chillmetin/G10_CENG211_HW4)
 ## Authors
 Matin Huseynzade: [**@chillmetin**](https://github.com/chillmetin) <br>
 Berke Udunman: [**@udunmanned**](https://github.com/udunmanned)
