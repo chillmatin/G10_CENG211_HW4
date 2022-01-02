@@ -13,3 +13,4 @@ Berke Udunman: [**@udunmanned**](https://github.com/udunmanned)
 ![unknown](https://user-images.githubusercontent.com/73022312/147884403-be5fb7e5-34cd-472d-a1dc-dc11d79fd1ef.png)
 
 ### UML Diagram
+![G10_CENG211_HW4](https://user-images.githubusercontent.com/73022312/147885688-86c7f067-b7de-4ef0-843a-b68e133c06d7.jpg)
