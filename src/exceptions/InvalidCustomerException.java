@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class InvalidCustomerException extends InvalidRentalDataException {
     public InvalidCustomerException() {
