@@ -2,6 +2,9 @@ import interfaces.IRentalManager;
 import managements.RentalManager;
 
 
+/**
+ * visit github repository: https://github.com/chillmetin/G10_CENG211_HW4
+ */
 public class RentACarApp {
     public static void main(String[] args) {
         IRentalManager manager = new RentalManager();
