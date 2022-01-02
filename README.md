@@ -1,7 +1,7 @@
 # G10_CENG211_HW4
 ## Authors
-Matin Huseynzade: **@chillmetin** <br>
-Berke Udunman: **@udunmanned**
+Matin Huseynzade: [**@chillmetin**](https://github.com/chillmetin) <br>
+Berke Udunman: [**@udunmanned**](https://github.com/udunmanned)
 
 ## UML diagrams
 
