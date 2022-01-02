@@ -7,7 +7,8 @@ public class RentACarApp {
         IRentalManager manager = new RentalManager();
 
 
-        manager.addNewMembershipType("B",0.35);
+        manager.addNewMembershipType("B",0.35);     // adding new commercial membership type
+                                                                               // demonstration
         manager.takeStats("HW4_Rentals.csv");
         manager.printStats();
 
