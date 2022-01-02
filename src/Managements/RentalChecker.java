@@ -5,9 +5,7 @@ import Interfaces.IRentalChecker;
 
 class RentalChecker implements IRentalChecker {
 
-
-
-    public boolean isNumeric(String stringNumber) { //package access
+     public boolean isNumeric(String stringNumber) { //package access
         if (stringNumber == null) {
             return false;
         }

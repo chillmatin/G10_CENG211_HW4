@@ -6,31 +6,28 @@ import Exceptions.InvalidCustomerException;
 
 
 import java.util.Objects;
+import java.util.Random;
 
-class RentalData<T> {
-
-    private RentalCalculator rentalCalculator;
+public class RentalData<T> {
 
     private int rentalTime;
     private double modelYearRatio;
-    private final int rentalCode;
-    private int rentalPrice;
+    private int rentalCode;
+    private double rentalPrice;
 
     private final Customer<T> customer;
     private final Car car;
 
 
     RentalData(Customer<T> customer, Car car, int time) {
-        rentalCalculator = new RentalCalculator();
-        rentalCalculator.generateRentalCode();
-        this.rentalCode = rentalCalculator.getRentalCode();
+
+
 
         this.customer = customer;
         this.car = car;
         this.rentalTime = time;
+        generateRentalCode();
 
-
-        this.rentalPrice = (int) rentalCalculator.calculatePrice(this);
 
         modelYearRatio = 0; //by default.
 
@@ -41,8 +38,7 @@ class RentalData<T> {
     }
 
     //---
-
-    Customer<T> getCustomer() {
+    private Customer<T> getCustomer() {
         return new Customer<>(customer.getId(), customer.getCustomerType());
     }
 
@@ -82,7 +78,7 @@ class RentalData<T> {
             } else if (getCustomerType().equals("Commercial")) {
                 return ((CommercialCustomer) customer).getMembershipType();
             } else {
-                throw new InvalidCustomerException("Membership is invalid");
+                throw new InvalidCustomerException("Membership is not valid");
             }
 
         } catch (InvalidCustomerException e) {
@@ -103,12 +99,22 @@ class RentalData<T> {
         return getCustomer().getId();
     }
 
+    private void generateRentalCode() {
+        Random random = new Random();
+        rentalCode = random.nextInt(1000000, 9999999);
+    }
+
+
     int getRentalCode() {
         return rentalCode;
     }
 
-    int getRentalPrice() {
+    double getRentalPrice() {
         return rentalPrice;
+    }
+
+    void setRentalPrice(double rentalPrice_) { //package access to rental manager set the rental's price.
+        this.rentalPrice = rentalPrice_;
     }
 
 

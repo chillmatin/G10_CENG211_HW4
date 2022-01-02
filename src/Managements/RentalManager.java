@@ -5,38 +5,63 @@ import Actors.Customers.*;
 import Exceptions.InvalidCustomerException;
 import Interfaces.IRentalChecker;
 import Interfaces.IRentalCounter;
+import Interfaces.IRentalManager;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
-public class RentalManager {
+public class RentalManager implements IRentalManager {
 
-    ArrayList<RentalData<?>> individualRentals = new ArrayList<>();
-    ArrayList<RentalData<?>> commercialRentals = new ArrayList<>();
+    private ArrayList<RentalData<?>> individualRentals = new ArrayList<>();
+    private ArrayList<RentalData<?>> commercialRentals = new ArrayList<>();
+
+    private ArrayList<String> membershipTypes = new ArrayList<>();
+    private ArrayList<Double> discountRates = new ArrayList<>();
+
+
 
     private IRentalChecker rentalChecker;
     private IRentalCounter rentalCounter;
+    private RentalCalculator rentalCalculator;
 
     public RentalManager(){
         rentalChecker= new RentalChecker();
+        rentalCalculator=  new RentalCalculator();
         rentalCounter = new RentalCounter();
+        String[] memberships = {"Member","S","G","P"};
+        Double[] discounts = {0.9,0.8,0.75,0.7};
+
+        Collections.addAll(discountRates, discounts);
+        Collections.addAll(membershipTypes, memberships);
+
+
     }
 
-    public void processRentals() {
+    public void takeStats() {
         FileIO.readFile("HW4_Rentals.csv");
         ArrayList<String> dataArray = FileIO.getDataArray();
+
+        rentalCalculator.updateMembershipTypes(membershipTypes,discountRates);
+
         for (String element : dataArray) {
             String[] splitElement = element.split(",");
+
             String customerType = splitElement[0];
             String id = splitElement[1];
             int time = Integer.parseInt(splitElement[2]);
+
             try {
 
                 Customer<?> customer = setCustomer(id, customerType);
                 Car car = new Car(splitElement[3], splitElement[4], splitElement[5]);
 
                 RentalData<?> rentalData = setRentalData(customer, car, time);
+
+                double price= rentalCalculator.calculatePrice(rentalData);
+                rentalData.setRentalPrice(price);
+
                 listAssign(rentalData);
 
             } catch (InvalidCustomerException e) {
@@ -44,6 +69,14 @@ public class RentalManager {
             }
         }
 
+    }
+
+    @Override
+    public void addNewMembershipType(String newMembershipType,Double discountRate) {
+        membershipTypes.add(newMembershipType);
+        discountRates.add(discountRate);
+
+        rentalCalculator.updateMembershipTypes(membershipTypes,discountRates);
     }
 
     private void listAssign(RentalData<?> rentalData) {
@@ -85,7 +118,7 @@ public class RentalManager {
             i++;
             System.out.println(i + ", " + element.getRentalCode() + ", " + element.getId() + "," +
                     " " + element.getMembership() + ", " + element.getRentalTime() + " days," +
-                    " " + element.getCarModel() + ", " + element.getModelYear() + ", " + element.getRentalPrice());
+                    " " + element.getCarModel() + ", " + element.getModelYear() + ", " + element.getRentalPrice()+"$");
 
         }
     }
@@ -102,12 +135,14 @@ public class RentalManager {
         }
     }
 
-    public void printStatistics() {
+    public void printStats() {
         System.out.println("Welcome..");
         rentalCounter.printCounters();
         printIndividualTable();
         printCommercialTable();
     }
+
+
 
 
 }

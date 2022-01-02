@@ -2,6 +2,8 @@ package Managements;
 
 import Interfaces.IRentalCounter;
 
+import java.util.ArrayList;
+
 class RentalCounter implements IRentalCounter {
 
     private static int totalCarRented = 0;
@@ -10,10 +12,18 @@ class RentalCounter implements IRentalCounter {
     private static int totalIndividualRentals = 0;
     private static int totalIndividualRentalDay = 0;
     private static int totalNonMemberIndividualRentals = 0;
+
+
+    private static ArrayList<Integer> totalDefinedMembershipList = new ArrayList<>();
+    private static ArrayList<String> definedMemberships = new ArrayList<>();
+
+
     private static int totalMemberIndividualRentals = 0;
     private static int totalSilverMemberCommercialRentals = 0;
     private static int totalGoldMemberCommercialRentals = 0;
     private static int totalPlatinumMemberCommercialRentals = 0;
+    private static int totalDefinedMemberCommercialRentals = 0;
+
 
     public static void addTotalCarRented() {
         totalCarRented++;
@@ -39,19 +49,43 @@ class RentalCounter implements IRentalCounter {
         totalNonMemberIndividualRentals++;
     }
 
-    public static void addTotalMemberIndividualRentals() {
+    public static void addTotalMemberRentals(String membershipType) {
+
+
+        if (membershipType.equals("Member")) {
+            addTotalMemberIndividualRentals();
+
+        } else if (membershipType.equals("S")) {
+            addTotalSilverMemberCommercialRentals();
+
+        } else if (membershipType.equals("G")) {
+            addTotalGoldMemberCommercialRentals();
+
+        } else if (membershipType.equals("P")) {
+            addTotalPlatinumMemberCommercialRentals();
+        } else {
+            if (definedMemberships.contains(membershipType)) {
+                totalDefinedMembershipList.set(definedMemberships.indexOf(membershipType), totalDefinedMembershipList.get(definedMemberships.indexOf(membershipType)) + 1);
+            } else {
+                definedMemberships.add(membershipType);
+                totalDefinedMembershipList.add(1);
+            }
+        }
+    }
+
+    private static void addTotalMemberIndividualRentals() {
         totalMemberIndividualRentals++;
     }
 
-    public static void addTotalSilverMemberCommercialRentals() {
+    private static void addTotalSilverMemberCommercialRentals() {
         totalSilverMemberCommercialRentals++;
     }
 
-    public static void addTotalGoldMemberCommercialRentals() {
+    private static void addTotalGoldMemberCommercialRentals() {
         totalGoldMemberCommercialRentals++;
     }
 
-    public static void addTotalPlatinumMemberCommercialRentals() {
+    private static void addTotalPlatinumMemberCommercialRentals() {
         totalPlatinumMemberCommercialRentals++;
     }
 
@@ -59,7 +93,7 @@ class RentalCounter implements IRentalCounter {
     public void printCounters() {
         System.out.println("Total number of cars rented:" + totalCarRented);
         System.out.println("Total number of commercial rentals:" + totalCommercialRentals);
-        System.out.println("Total number of commercial rental-month:" + totalCommercialRentalMonth );
+        System.out.println("Total number of commercial rental-month:" + totalCommercialRentalMonth);
         System.out.println("Total number of individual rentals:" + totalIndividualRentals);
         System.out.println("Total number of individual rentals-day:" + totalIndividualRentalDay);
         System.out.println("Total number of rentals of individual non-member customers:" + totalNonMemberIndividualRentals);
@@ -67,6 +101,13 @@ class RentalCounter implements IRentalCounter {
         System.out.println("Total number of rentals of silver commercial customers:" + totalSilverMemberCommercialRentals);
         System.out.println("Total number of rentals of gold commercial customers:" + totalGoldMemberCommercialRentals);
         System.out.println("Total number of rentals of platinum commercial customers:" + totalPlatinumMemberCommercialRentals);
+
+        if(definedMemberships.size()>0){
+            for (int i = 0; i<definedMemberships.size();i++) {
+                System.out.println("Total number of rentals of "+ definedMemberships.get(i)+ "commercial customers:" + totalDefinedMembershipList.get(i));
+            }
+        }
+
     }
 
 }

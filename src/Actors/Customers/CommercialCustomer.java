@@ -12,4 +12,5 @@ public class CommercialCustomer extends Customer<String> {
     public String getMembershipType() {
         return membershipType;
     }
+
 }
